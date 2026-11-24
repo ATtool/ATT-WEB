@@ -1,0 +1,24 @@
+{
+  "name": "att-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Adventist Tamil Tool - offline PWA (Songs, Home, Books)",
+  "scripts": {
+    "dev": "vite",
+    "data": "node scripts/fetch-gists.mjs && node scripts/prepare-data.mjs",
+    "icons": "node scripts/icons.mjs",
+    "build": "node scripts/fetch-gists.mjs && node scripts/prepare-data.mjs && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/build-sw.mjs",
+    "preview": "vite preview",
+    "serve": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "sharp": "^0.33.5",
+    "vite": "^6.0.7"
+  }
+}

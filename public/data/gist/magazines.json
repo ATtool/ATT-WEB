@@ -1,0 +1,536 @@
+{
+  "magazines": [
+    {
+      "id": "mag_2026_06",
+      "title_tamil": "ஜூன் 2026",
+      "title_english": "June 2026",
+      "pdf_url": "https://drive.google.com/uc?id=1M1PrOOuKBd5Go9tatJzQd6mSI0HS2y2O",
+      "date_val": "2026-06-01"
+    },
+    {
+      "id": "mag_2026_05",
+      "title_tamil": "மே 2026",
+      "title_english": "May 2026",
+      "pdf_url": "https://drive.google.com/uc?id=1bXtH8oEmx5T321a4oXSILGNXuZ6aMvRD",
+      "date_val": "2026-06-01"
+    },
+    {
+      "id": "mag_2026_04",
+      "title_tamil": "ஏப்ரல் 2026",
+      "title_english": "April 2026",
+      "pdf_url": "https://drive.google.com/uc?id=1mEK7LBVYlxfCWXD-YBUGdnF3yEU6JrBo",
+      "date_val": "2026-06-01"
+    },
+    {
+      "id": "mag_2026_03",
+      "title_tamil": "மார்ச் 2026",
+      "title_english": "March 2026",
+      "pdf_url": "https://drive.google.com/uc?id=1eHAeN0YmfYARezpVw9GoI5lDLFC3U9_o",
+      "date_val": "2026-06-01"
+    },
+    {
+      "id": "mag_2026_02",
+      "title_tamil": "பிப்ரவரி 2026",
+      "title_english": "February 2026",
+      "pdf_url": "https://drive.google.com/uc?id=1jH3X2lDNwAIM7jB2vLN7z-sw5-XSCtEd",
+      "date_val": "2026-06-01"
+    },
+    {
+      "id": "mag_2026_01",
+      "title_tamil": "ஜனவரி 2026",
+      "title_english": "January 2026",
+      "pdf_url": "https://drive.google.com/uc?id=14aVHm__-QUzYEBt1_PpV4mtzcVwMLwe9",
+      "date_val": "2026-06-01"
+    },
+    {
+      "id": "mag_2025_12",
+      "title_tamil": "டிசம்பர் 2025",
+      "title_english": "December 2025",
+      "pdf_url": "https://drive.google.com/uc?id=1XkYNYWE9u7Mwe42Z3xohkjXsHxZ7xHbv",
+      "date_val": "2025-11-01"
+    },
+    {
+      "id": "mag_2025_11",
+      "title_tamil": "நவம்பர் 2025",
+      "title_english": "November 2025",
+      "pdf_url": "https://drive.google.com/uc?id=1Geshtv-fvJOrvaieFIdeXdCrnBjkNabC",
+      "date_val": "2025-11-01"
+    },
+    {
+      "id": "mag_2025_10",
+      "title_tamil": "அக்டோபர் 2025",
+      "title_english": "October 2025",
+      "pdf_url": "https://drive.google.com/uc?id=1KT2qZkPgLtPwAxrxdkpoc__uE3PuBoue",
+      "date_val": "2025-10-01"
+    },
+    {
+      "id": "mag_2025_09",
+      "title_tamil": "செப்டம்பர் 2025",
+      "title_english": "September 2025",
+      "pdf_url": "https://drive.google.com/uc?id=15xLf2jOeoHtwK_O0vVnNsmLsZW4OQiKt",
+      "date_val": "2025-09-01"
+    },
+    {
+      "id": "mag_2025_08",
+      "title_tamil": "ஆகஸ்ட் 2025",
+      "title_english": "August 2025",
+      "pdf_url": "https://drive.google.com/uc?id=1WV2ke71HjsAxRx6BHZmLNwXhAZx39WOk",
+      "date_val": "2025-08-01"
+    },
+    {
+      "id": "mag_2025_07",
+      "title_tamil": "ஜூலை 2025",
+      "title_english": "July 2025",
+      "pdf_url": "https://drive.google.com/uc?id=1orNG2br6h6myUoFgHTz3OYXuztecWdop",
+      "date_val": "2025-07-01"
+    },
+    {
+      "id": "mag_2023_09",
+      "title_tamil": "செப்டம்பர் 2023",
+      "title_english": "September 2023",
+      "pdf_url": "https://drive.google.com/uc?id=1Y_pEOyk9OjYfHSQ3hyyeiPnna3NdFGnB",
+      "date_val": "2023-09-01"
+    },
+    {
+      "id": "mag_2023_08",
+      "title_tamil": "ஆகஸ்ட் 2023",
+      "title_english": "August 2023",
+      "pdf_url": "https://drive.google.com/uc?id=1RgGC9Senn_0pFn9pT5cvX5sldheuLGJ7",
+      "date_val": "2023-08-01"
+    },
+    {
+      "id": "mag_2023_07",
+      "title_tamil": "ஜூலை 2023",
+      "title_english": "July 2023",
+      "pdf_url": "https://drive.google.com/uc?id=17C5fvljh0gcah22V6Ci1DAFnijAnk1SS",
+      "date_val": "2023-07-01"
+    },
+    {
+      "id": "mag_2023_06",
+      "title_tamil": "ஜூன் 2023",
+      "title_english": "June 2023",
+      "pdf_url": "https://drive.google.com/uc?id=18WHf5m18Co5PojjP-suwV4z0lWXP3hdm",
+      "date_val": "2023-06-01"
+    },
+    {
+      "id": "mag_2023_05",
+      "title_tamil": "மே 2023",
+      "title_english": "May 2023",
+      "pdf_url": "https://drive.google.com/uc?id=1SQUfveJqM0ugpkBe7CKZ3izbwS1nTx4Y",
+      "date_val": "2023-05-01"
+    },
+    {
+      "id": "mag_2023_04",
+      "title_tamil": "ஏப்ரல் 2023",
+      "title_english": "April 2023",
+      "pdf_url": "https://drive.google.com/uc?id=1K4h72Sq_HC4GjxXtfsofvBn1oDvHyEzi",
+      "date_val": "2023-04-01"
+    },
+    {
+      "id": "mag_2023_03",
+      "title_tamil": "மார்ச் 2023",
+      "title_english": "March 2023",
+      "pdf_url": "https://drive.google.com/uc?id=17ubKrFNyCnyAHO0EUA7JFU95A1LpHwkY",
+      "date_val": "2023-03-01"
+    },
+    {
+      "id": "mag_2023_02",
+      "title_tamil": "பிப்ரவரி 2023",
+      "title_english": "February 2023",
+      "pdf_url": "https://drive.google.com/uc?id=1rblVTvECPBX2vpxzsGY_XOv7lfYvLwcf",
+      "date_val": "2023-02-01"
+    },
+    {
+      "id": "mag_2023_01",
+      "title_tamil": "ஜனவரி 2023",
+      "title_english": "January 2023",
+      "pdf_url": "https://drive.google.com/uc?id=1n28nqGy8KnKPg3epOxC_8aWnfwnJro85",
+      "date_val": "2023-01-01"
+    },
+    {
+      "id": "mag_2022_12",
+      "title_tamil": "டிசம்பர் 2022",
+      "title_english": "December 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1p53GUH4zw9is8buKKiV-dkt-1wK73e-L",
+      "date_val": "2022-12-01"
+    },
+    {
+      "id": "mag_2022_11",
+      "title_tamil": "நவம்பர் 2022",
+      "title_english": "November 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1yJRDfjIEfsn_J33D2x75SVKTOQaA3TrD",
+      "date_val": "2022-11-01"
+    },
+    {
+      "id": "mag_2022_10",
+      "title_tamil": "அக்டோபர் 2022",
+      "title_english": "October 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1P3M-qFrmXcsHBqkIEmJfLWHP-9t0z1uD",
+      "date_val": "2022-10-01"
+    },
+    {
+      "id": "mag_2022_09",
+      "title_tamil": "செப்டம்பர் 2022",
+      "title_english": "September 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1naLKucKHoABoybrsV2SNGKxRNVcMzAih",
+      "date_val": "2022-09-01"
+    },
+    {
+      "id": "mag_2022_08",
+      "title_tamil": "ஆகஸ்ட் 2022",
+      "title_english": "August 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1fqVCOIcnK6DOWYtYvERDcY-cnlDcQYoi",
+      "date_val": "2022-08-01"
+    },
+    {
+      "id": "mag_2022_07",
+      "title_tamil": "ஜூலை 2022",
+      "title_english": "July 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1C423K3zxYpqdgXnwafhZddFIzRYa6cmn",
+      "date_val": "2022-07-01"
+    },
+    {
+      "id": "mag_2022_06",
+      "title_tamil": "ஜூன் 2022",
+      "title_english": "June 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1gjQIfKInvlYCsIOivK43NoLylc4Cr1K-",
+      "date_val": "2022-06-01"
+    },
+    {
+      "id": "mag_2022_05",
+      "title_tamil": "மே 2022",
+      "title_english": "May 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1IXT68kHD7hc0k-dqqoCx9D5REAgf2Bmd",
+      "date_val": "2022-05-01"
+    },
+    {
+      "id": "mag_2022_04",
+      "title_tamil": "ஏப்ரல் 2022",
+      "title_english": "April 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1zJB76xkeSBSn5_LL7iHP_sZUOg2Ne6Ac",
+      "date_val": "2022-04-01"
+    },
+    {
+      "id": "mag_2022_03",
+      "title_tamil": "மார்ச் 2022",
+      "title_english": "March 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1KfC4vKVxjaTLaYksubZwsE4sop1TlN-3",
+      "date_val": "2022-03-01"
+    },
+    {
+      "id": "mag_2022_02",
+      "title_tamil": "பிப்ரவரி 2022",
+      "title_english": "February 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1soDjPdpNgGLT1imdS6J69YNv7IoW9wjt",
+      "date_val": "2022-02-01"
+    },
+    {
+      "id": "mag_2022_01",
+      "title_tamil": "ஜனவரி 2022",
+      "title_english": "January 2022",
+      "pdf_url": "https://drive.google.com/uc?id=1ZaEduSYhg7mMH7vxNBixspnznv4Iz9UF",
+      "date_val": "2022-01-01"
+    },
+    {
+      "id": "mag_2021_12",
+      "title_tamil": "டிசம்பர் 2021",
+      "title_english": "December 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1-_EmPk_AQRJ5JagjGXv0W7AoRBsHW0IN",
+      "date_val": "2021-12-01"
+    },
+    {
+      "id": "mag_2021_11",
+      "title_tamil": "நவம்பர் 2021",
+      "title_english": "November 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1JI14dH7TvVLwzYuLn7k4Dhv0L5vtov5P",
+      "date_val": "2021-11-01"
+    },
+    {
+      "id": "mag_2021_10",
+      "title_tamil": "அக்டோபர் 2021",
+      "title_english": "October 2021",
+      "pdf_url": "https://drive.google.com/uc?id=17_wNkjzzvjA_SLaCGw0G1crM5yKRt8lD",
+      "date_val": "2021-10-01"
+    },
+    {
+      "id": "mag_2021_09",
+      "title_tamil": "செப்டம்பர் 2021",
+      "title_english": "September 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1wSu4QyQEF-aGzf1iG5uOM2U3G7obZ0Ar",
+      "date_val": "2021-09-01"
+    },
+    {
+      "id": "mag_2021_08",
+      "title_tamil": "ஆகஸ்ட் 2021",
+      "title_english": "August 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1G-z5NNg3AMuJO74jqOtWSM9PAoA7_cTD",
+      "date_val": "2021-08-01"
+    },
+    {
+      "id": "mag_2021_07",
+      "title_tamil": "ஜூலை 2021",
+      "title_english": "July 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1vTfBdERGGCtiUXLJiaIE31e5hbAcvhck",
+      "date_val": "2021-07-01"
+    },
+    {
+      "id": "mag_2021_06",
+      "title_tamil": "ஜூன் 2021",
+      "title_english": "June 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1dz7Ubk0lZnL7tHF7CqBuNANu2SRP2fBL",
+      "date_val": "2021-06-01"
+    },
+    {
+      "id": "mag_2021_05",
+      "title_tamil": "மே 2021",
+      "title_english": "May 2021",
+      "pdf_url": "https://drive.google.com/uc?id=14QZoSkhW0VhAnAB-2vCCCrGK4t0lKK4k",
+      "date_val": "2021-05-01"
+    },
+    {
+      "id": "mag_2021_04",
+      "title_tamil": "ஏப்ரல் 2021",
+      "title_english": "April 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1PbqEF7ldC485ghxpFeYNvFgYSijP3Fs2",
+      "date_val": "2021-04-01"
+    },
+    {
+      "id": "mag_2021_03",
+      "title_tamil": "மார்ச் 2021",
+      "title_english": "March 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1MDH1onmVD7o6Tx1tfFzl_3B6C0-QC0IW",
+      "date_val": "2021-03-01"
+    },
+    {
+      "id": "mag_2021_02",
+      "title_tamil": "பிப்ரவரி 2021",
+      "title_english": "February 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1Hz0U_rtCSJbKJSKBLYIemZTp4keagRhw",
+      "date_val": "2021-02-01"
+    },
+    {
+      "id": "mag_2021_01",
+      "title_tamil": "ஜனவரி 2021",
+      "title_english": "January 2021",
+      "pdf_url": "https://drive.google.com/uc?id=1ZEke73gY_FnxXDi5m_ZlfXKag4-BSzq4",
+      "date_val": "2021-01-01"
+    },
+    {
+      "id": "mag_2020_12",
+      "title_tamil": "டிசம்பர் 2020",
+      "title_english": "December 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1PdgHnl8fKZY3REhA1snqJYCoJ0h9PkE4",
+      "date_val": "2020-12-01"
+    },
+    {
+      "id": "mag_2020_11",
+      "title_tamil": "நவம்பர் 2020",
+      "title_english": "November 2020",
+      "pdf_url": "https://drive.google.com/uc?id=143Z8rrfSPP54x9f9u2KqxQzxRkNZxmZW",
+      "date_val": "2020-11-01"
+    },
+    {
+      "id": "mag_2020_10",
+      "title_tamil": "அக்டோபர் 2020",
+      "title_english": "October 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1HcVdVDDpzJH_kvXyDXgq7j-b_-uwxK6D",
+      "date_val": "2020-10-01"
+    },
+    {
+      "id": "mag_2020_09",
+      "title_tamil": "செப்டம்பர் 2020",
+      "title_english": "September 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1CJVxGvs4bFyZOLMHkQ0ntHD23WyKQfe2",
+      "date_val": "2020-09-01"
+    },
+    {
+      "id": "mag_2020_08",
+      "title_tamil": "ஆகஸ்ட் 2020",
+      "title_english": "August 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1seV6T8NcYt7sjWwIi9_L0-3JOM9eNn45",
+      "date_val": "2020-08-01"
+    },
+    {
+      "id": "mag_2020_07",
+      "title_tamil": "ஜூலை 2020",
+      "title_english": "July 2020",
+      "pdf_url": "https://drive.google.com/uc?id=185LEaZJSwTzHrPh7tmgstEcpaokmOG1K",
+      "date_val": "2020-07-01"
+    },
+    {
+      "id": "mag_2020_06",
+      "title_tamil": "ஜூன் 2020",
+      "title_english": "June 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1RvTNf15NVUrcGgqd6ic87DeUY7j5FxRO",
+      "date_val": "2020-06-01"
+    },
+    {
+      "id": "mag_2020_05",
+      "title_tamil": "மே 2020",
+      "title_english": "May 2020",
+      "pdf_url": "https://drive.google.com/uc?id=16PY63_4i975xmC2E88JIRsvODUXUg79z",
+      "date_val": "2020-05-01"
+    },
+    {
+      "id": "mag_2020_04",
+      "title_tamil": "ஏப்ரல் 2020",
+      "title_english": "April 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1EVSsqoRU5jDxSMD-YKM9vheWdrk834CE",
+      "date_val": "2020-04-01"
+    },
+    {
+      "id": "mag_2020_03",
+      "title_tamil": "மார்ச் 2020",
+      "title_english": "March 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1GTTtBBiSJM7TvLohB41_2ZqGzmRpdy5j",
+      "date_val": "2020-03-01"
+    },
+    {
+      "id": "mag_2020_02",
+      "title_tamil": "பிப்ரவரி 2020",
+      "title_english": "February 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1mCKfrzdtbJZJESkvqLVsFe24OfDnNFc2",
+      "date_val": "2020-02-01"
+    },
+    {
+      "id": "mag_2020_01",
+      "title_tamil": "ஜனவரி 2020",
+      "title_english": "January 2020",
+      "pdf_url": "https://drive.google.com/uc?id=1BSht3qcvbrGSFk7WkHnCvyVVCBxJHJBZ",
+      "date_val": "2020-01-01"
+    },
+    {
+      "id": "mag_2019_12",
+      "title_tamil": "டிசம்பர் 2019",
+      "title_english": "December 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1FbrcS775xzt5RmDjmQnIh8VCRQ_kvmCw",
+      "date_val": "2019-12-01"
+    },
+    {
+      "id": "mag_2019_11",
+      "title_tamil": "நவம்பர் 2019",
+      "title_english": "November 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1jUnL9-EsFurH0QdW3B11DnaVYEPCpgvj",
+      "date_val": "2019-11-01"
+    },
+    {
+      "id": "mag_2019_10",
+      "title_tamil": "அக்டோபர் 2019",
+      "title_english": "October 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1rXIfPv1E8NdwbMkO4aQsGvWQ4QD7qJ8-",
+      "date_val": "2019-10-01"
+    },
+    {
+      "id": "mag_2019_09",
+      "title_tamil": "செப்டம்பர் 2019",
+      "title_english": "September 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1ljdj0apxCUu1X059xbcGGqse1jV6TGiP",
+      "date_val": "2019-09-01"
+    },
+    {
+      "id": "mag_2019_08",
+      "title_tamil": "ஆகஸ்ட் 2019",
+      "title_english": "August 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1wmWA4TCR00ys1AsUtQky9JzYTOY2BKVz",
+      "date_val": "2019-08-01"
+    },
+    {
+      "id": "mag_2019_07",
+      "title_tamil": "ஜூலை 2019",
+      "title_english": "July 2019",
+      "pdf_url": "https://drive.google.com/uc?id=13BUQ121pkD5tDeGZBPQXbbF_8iXaIu1w",
+      "date_val": "2019-07-01"
+    },
+    {
+      "id": "mag_2019_06",
+      "title_tamil": "ஜூன் 2019",
+      "title_english": "June 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1lBeqv6DtuvkTly1lcDmvOMEbgPxxZUBm",
+      "date_val": "2019-06-01"
+    },
+    {
+      "id": "mag_2019_05",
+      "title_tamil": "மே 2019",
+      "title_english": "May 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1by_GkM7E61KCFFrhuLCrEyCzC5QQW1Qw",
+      "date_val": "2019-05-01"
+    },
+    {
+      "id": "mag_2019_04",
+      "title_tamil": "ஏப்ரல் 2019",
+      "title_english": "April 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1mTDp9opMvdjSq6JeC4IhT1WK7iX8vJl-",
+      "date_val": "2019-04-01"
+    },
+    {
+      "id": "mag_2019_03",
+      "title_tamil": "மார்ச் 2019",
+      "title_english": "March 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1DJhFxleMccJKRKJHm_t64FK9av4-1lOo",
+      "date_val": "2019-03-01"
+    },
+    {
+      "id": "mag_2019_02",
+      "title_tamil": "பிப்ரவரி 2019",
+      "title_english": "February 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1URhhd8icZovnSoLNmLwifyA350DZgFcv",
+      "date_val": "2019-02-01"
+    },
+    {
+      "id": "mag_2019_01",
+      "title_tamil": "ஜனவரி 2019",
+      "title_english": "January 2019",
+      "pdf_url": "https://drive.google.com/uc?id=1qG3Q_XtUqEwQiv5bQYuelOyXMNsH42AO",
+      "date_val": "2019-01-01"
+    },
+    {
+      "id": "mag_2018_12",
+      "title_tamil": "டிசம்பர் 2018",
+      "title_english": "December 2018",
+      "pdf_url": "https://drive.google.com/uc?id=1cL0tOTRvIXsxWmT-TxBNRXganL4mvIGq",
+      "date_val": "2018-12-01"
+    },
+    {
+      "id": "mag_2018_11",
+      "title_tamil": "நவம்பர் 2018",
+      "title_english": "November 2018",
+      "pdf_url": "https://drive.google.com/uc?id=1_KmutJvYOktqJIc-3kk9B5c63GPiFeml",
+      "date_val": "2018-11-01"
+    },
+    {
+      "id": "mag_2018_10",
+      "title_tamil": "அக்டோபர் 2018",
+      "title_english": "October 2018",
+      "pdf_url": "https://drive.google.com/uc?id=1bdPIZlu1rNGfZa4qTJvwksmrlNSeA7mA",
+      "date_val": "2018-10-01"
+    },
+    {
+      "id": "mag_2018_09",
+      "title_tamil": "செப்டம்பர் 2018",
+      "title_english": "September 2018",
+      "pdf_url": "https://drive.google.com/uc?id=1XbiOF_ixP5dUszayZ4CWfeGtAvJpD8jA",
+      "date_val": "2018-09-01"
+    },
+    {
+      "id": "mag_2018_08",
+      "title_tamil": "ஆகஸ்ட் 2018",
+      "title_english": "August 2018",
+      "pdf_url": "https://drive.google.com/uc?id=1KK8Ui0w7WvpKCe03PEij2SWdcjoaW74_",
+      "date_val": "2018-08-01"
+    },
+    {
+      "id": "mag_2018_07",
+      "title_tamil": "ஜூலை 2018",
+      "title_english": "July 2018",
+      "pdf_url": "https://drive.google.com/uc?id=1V8amGVHOrDhy5M_IZWEzs6uWlVR1j1sd",
+      "date_val": "2018-07-01"
+    },
+    {
+      "id": "mag_2018_06",
+      "title_tamil": "ஜூன் 2018",
+      "title_english": "June 2018",
+      "pdf_url": "https://drive.google.com/uc?id=1QzjcIMSCd6xdMedqXspCX6X6I_s0taq5",
+      "date_val": "2018-06-01"
+    }
+  ]
+}
