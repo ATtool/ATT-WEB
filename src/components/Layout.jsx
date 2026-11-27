@@ -13,7 +13,6 @@ const DRAWER_LINKS = [
   { to: '/home/manna/', label: "Today's Manna", icon: 'sun' },
   { to: '/home/sabbath-school/', label: 'Sabbath School', icon: 'book-open' },
   { to: '/home/magazines/', label: 'Magazines', icon: 'list' },
-  { to: '/home/updates/', label: 'Updates', icon: 'sparkles' },
   { to: '/home/settings/', label: 'Settings', icon: 'settings' },
   { to: '/home/about/', label: 'About', icon: 'info' },
 ];
@@ -66,12 +65,10 @@ function Drawer() {
 
 function BottomNav() {
   const route = useRoute();
-  const songsActive = ['songs', 'zion', 'zionCategory', 'thirumarai', 'thirumaraiList', 'song', 'other', 'custom'].includes(
-    route.name
-  );
+  const songsActive = ['songs', 'zion', 'zionCategory', 'thirumarai', 'thirumaraiList', 'song'].includes(route.name);
   const homeActive =
     route.name === 'home' ||
-    ['mannaList', 'manna', 'sabbathList', 'sabbathLesson', 'sabbathDay', 'magazines', 'updates', 'settings', 'about'].includes(
+    ['mannaList', 'manna', 'sabbathList', 'sabbathLesson', 'sabbathDay', 'magazines', 'settings', 'about'].includes(
       route.name
     );
   const booksActive = ['books', 'book'].includes(route.name);

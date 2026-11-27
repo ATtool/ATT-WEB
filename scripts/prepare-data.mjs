@@ -174,10 +174,8 @@ await writeSongs('thirumarai', thirumarai);
 // Gist-derived data
 // ---------------------------------------------------------------------------
 const manna = await readJSON(path.join(GIST, 'manna.json'));
-const updates = await readJSON(path.join(GIST, 'updates.json'));
 const magazines = await readJSON(path.join(GIST, 'magazines.json'));
 const sabbath = await readJSON(path.join(GIST, 'sabbath.json'));
-const otherSongs = await readJSON(path.join(GIST, 'other-songs.json'));
 
 const devotions = manna.devotions || {};
 const mannaDates = Object.keys(devotions).sort().reverse();
@@ -334,11 +332,9 @@ const home = {
       }
     : null,
   magazine: latestMagazine,
-  updates: (Array.isArray(updates) ? updates : []).slice(0, 3),
   counts: {
     zion: zion.length,
     thirumarai: thirumarai.length,
-    other: Array.isArray(otherSongs.songs) ? otherSongs.songs.length : 0,
     books: EGW_BOOKS_DATA.length,
   },
 };
@@ -349,7 +345,6 @@ const stats = {
   thirumarai: thirumarai.length,
   thirumaraiHope: thirumarai.filter((s) => s.hopeNumber).length,
   thirumaraiOld: thirumarai.length,
-  other: Array.isArray(otherSongs.songs) ? otherSongs.songs.length : 0,
   categories: zionCategories.length,
   books: EGW_BOOKS_DATA.length,
   manna: mannaDates.length,

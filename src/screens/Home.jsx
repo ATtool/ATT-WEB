@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from '../components/Icon.jsx';
 import MixedText from '../components/MixedText.jsx';
 import { Link } from '../router.jsx';
@@ -67,18 +67,14 @@ export default function Home() {
     const load = async () => {
       const results = await Promise.allSettled([
         fetchLive('manna'),
-        fetchLive('updates'),
         fetchLive('magazines'),
         fetchLive('sabbath'),
       ]);
       if (!alive) return;
       const next = { ...home };
-      const [manna, updates, magazines, sabbath] = results;
+      const [manna, magazines, sabbath] = results;
       if (manna.status === 'fulfilled' && manna.value?.devotions) {
         next.manna = pickManna(manna.value.devotions);
-      }
-      if (updates.status === 'fulfilled' && Array.isArray(updates.value)) {
-        next.updates = updates.value.slice(0, 3);
       }
       if (magazines.status === 'fulfilled' && Array.isArray(magazines.value?.magazines)) {
         next.magazine = [...magazines.value.magazines].sort((a, b) =>
@@ -97,20 +93,6 @@ export default function Home() {
   }, [home]);
 
   const view = live || home;
-  const counts = view?.counts || {};
-  const latestUpdate = view?.updates?.[0];
-
-  const quickLinks = useMemo(
-    () => [
-      { to: '/songs/', label: 'Songs', sub: 'பாடல்கள்', icon: 'music' },
-      { to: '/books/', label: 'Books', sub: 'புத்தகங்கள்', icon: 'books' },
-      { to: '/home/manna/', label: 'Manna', sub: 'மன்னா', icon: 'sun' },
-      { to: '/home/sabbath-school/', label: 'Sabbath', sub: 'சபாத் பள்ளி', icon: 'book-open' },
-      { to: '/home/magazines/', label: 'Magazines', sub: 'இதழ்கள்', icon: 'list' },
-      { to: '/home/about/', label: 'About', sub: 'பற்றி', icon: 'info' },
-    ],
-    []
-  );
 
   return (
     <div className="home">
@@ -130,33 +112,6 @@ export default function Home() {
         </Link>
       </header>
       <main className="home-main">
-        <section className="home-hero">
-          <div className="hero-orb" aria-hidden="true" />
-          <span className="hero-kicker">இணையம் இல்லாமலும் பயன்படுத்தலாம்</span>
-          <MixedText as="h1" size={typography.display.fontSize + 2} className="hero-title">
-            வணக்கம்
-          </MixedText>
-          <p className="hero-copy">
-            Tamil songs, Sabbath School lessons, magazines and Ellen G. White books — all in one place, saved for offline
-            use.
-          </p>
-          <div className="hero-stats">
-            <span><strong>{counts.zion || 600}</strong> Zion</span>
-            <span><strong>{counts.thirumarai || 421}</strong> Thirumarai</span>
-            <span><strong>{counts.books || 30}</strong> Books</span>
-          </div>
-        </section>
-
-        {latestUpdate && (
-          <Link to="/home/updates/" className="update-banner">
-            <span className="update-icon"><Icon name="sparkles" size={18} /></span>
-            <span className="update-text">
-              <strong>{latestUpdate.titleEn || 'What’s new'}</strong>
-              <small>{latestUpdate.descEn || latestUpdate.titleTa}</small>
-            </span>
-            <Icon name="chevron-right" size={18} />
-          </Link>
-        )}
 
         <section className="section">
           <div className="section-head">
@@ -228,21 +183,6 @@ export default function Home() {
           ) : (
             <div className="card skeleton-card">Magazines will appear here.</div>
           )}
-        </section>
-
-        <section className="section">
-          <div className="section-head">
-            <MixedText as="h2" size={typography.h2.fontSize}>Explore</MixedText>
-          </div>
-          <div className="quick-grid">
-            {quickLinks.map((item) => (
-              <Link key={item.to} to={item.to} className="quick-card">
-                <span className="quick-icon"><Icon name={item.icon} size={21} /></span>
-                <span className="quick-label">{item.label}</span>
-                <span className="quick-sub">{item.sub}</span>
-              </Link>
-            ))}
-          </div>
         </section>
 
         {!standalone && (

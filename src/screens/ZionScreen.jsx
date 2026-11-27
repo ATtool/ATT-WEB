@@ -6,12 +6,18 @@ import MixedText from '../components/MixedText.jsx';
 import { useData } from '../context/DataContext.jsx';
 import { loadMeta } from '../data/api.js';
 import { useMeta } from '../lib/useMeta.js';
+import { useSettings } from '../context/SettingsContext.jsx';
 
 export default function ZionScreen({ categorySlug }) {
   const { data: meta } = useData('zionMeta', () => loadMeta('zion'));
+  const { isThanglish } = useSettings();
   const category = categorySlug ? meta?.categories?.find((item) => item.slug === categorySlug) : null;
 
-  const title = category ? category.name : 'Zion Songs';
+  const title = category
+    ? isThanglish
+      ? category.nameEn || category.name
+      : category.name
+    : 'Zion Songs';
   useMeta(
     category
       ? `${category.name} — Zion Tamil Christian Songs | Adventist Tamil Tool`

@@ -9,14 +9,11 @@ import SongsHub from './screens/SongsHub.jsx';
 import ZionScreen from './screens/ZionScreen.jsx';
 import ThirumaraiScreen, { ThirumaraiHub } from './screens/ThirumaraiScreen.jsx';
 import SongPage from './screens/SongPage.jsx';
-import OtherSongs from './screens/OtherSongs.jsx';
-import CustomSongs from './screens/CustomSongs.jsx';
 import BooksScreen from './screens/BooksScreen.jsx';
 import BookDetail from './screens/BookDetail.jsx';
 import { MannaList, MannaReader } from './screens/Manna.jsx';
 import { SabbathList, SabbathLesson, SabbathDay } from './screens/Sabbath.jsx';
 import Magazines from './screens/Magazines.jsx';
-import Updates from './screens/Updates.jsx';
 import Settings from './screens/Settings.jsx';
 import About from './screens/About.jsx';
 import NotFound from './screens/NotFound.jsx';
@@ -43,10 +40,6 @@ function Screen() {
       return <ThirumaraiScreen variant={route.variant} />;
     case 'song':
       return <SongPage />;
-    case 'other':
-      return <OtherSongs />;
-    case 'custom':
-      return <CustomSongs />;
     case 'books':
       return <BooksScreen />;
     case 'book':
@@ -63,8 +56,6 @@ function Screen() {
       return <SabbathDay />;
     case 'magazines':
       return <Magazines />;
-    case 'updates':
-      return <Updates />;
     case 'settings':
       return <Settings />;
     case 'about':

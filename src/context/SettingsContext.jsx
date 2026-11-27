@@ -10,6 +10,7 @@ const KEYS = {
   lyricsSize: '@lyrics_size',
   lyricsSpacing: '@lyrics_spacing',
   lyricsLineHeight: '@lyrics_line_height',
+  songsLang: '@songs_lang',
 };
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -37,6 +38,7 @@ export function SettingsProvider({ children }) {
   const [lyricsSize, setLyricsSizeState] = useState(21);
   const [lyricsSpacing, setLyricsSpacingState] = useState(0);
   const [lyricsLineHeight, setLyricsLineHeightState] = useState(32);
+  const [isThanglish, setIsThanglish] = useState(false);
   const appliedBaseRef = useRef(15);
 
   const shiftReadingSizes = useCallback((delta) => {
@@ -75,6 +77,8 @@ export function SettingsProvider({ children }) {
     if (Number.isFinite(savedLyricsSpacing)) setLyricsSpacingState(clamp(savedLyricsSpacing, 0, 8));
     const savedLineHeight = parseInt(read(KEYS.lyricsLineHeight) || '', 10);
     if (Number.isFinite(savedLineHeight)) setLyricsLineHeightState(clamp(savedLineHeight, 20, 70));
+
+    setIsThanglish(read(KEYS.songsLang) === 'thanglish');
   }, [applyAppFontSize]);
 
   useEffect(() => {
@@ -129,6 +133,12 @@ export function SettingsProvider({ children }) {
     const next = clamp(Number(value) || 32, 20, 70);
     setLyricsLineHeightState(next);
     write(KEYS.lyricsLineHeight, next);
+  }, []);
+
+  const setThanglish = useCallback((value) => {
+    const next = !!value;
+    setIsThanglish(next);
+    write(KEYS.songsLang, next ? 'thanglish' : 'tamil');
   }, []);
 
   const restoreDefaultTextSettings = useCallback(() => {
@@ -217,6 +227,8 @@ export function SettingsProvider({ children }) {
       setLyricsSpacing,
       lyricsLineHeight,
       setLyricsLineHeight,
+      isThanglish,
+      setThanglish,
       restoreDefaultTextSettings,
     }),
     [
@@ -237,6 +249,8 @@ export function SettingsProvider({ children }) {
       setLyricsSpacing,
       lyricsLineHeight,
       setLyricsLineHeight,
+      isThanglish,
+      setThanglish,
       restoreDefaultTextSettings,
     ]
   );

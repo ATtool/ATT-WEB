@@ -54,9 +54,6 @@ export function parseRoute(pathname) {
   if (a === 'songs' && b === 'thirumarai' && !c) return { name: 'thirumarai' };
   if (a === 'songs' && b === 'thirumarai' && (c === 'hope' || c === 'old')) return { name: 'thirumaraiList', variant: c };
   if (a === 'songs' && b === 'thirumarai' && c) return { name: 'song', collection: 'thirumarai', id: songIdFromSegment(c) };
-  if (a === 'songs' && b === 'other' && !c) return { name: 'other' };
-  if (a === 'songs' && b === 'other' && c) return { name: 'song', collection: 'other', id: songIdFromSegment(c) };
-  if (a === 'songs' && b === 'custom') return { name: 'custom' };
   if (a === 'books' && !b) return { name: 'books' };
   if (a === 'books' && b) return { name: 'book', id: b };
   if (a === 'home' && b === 'manna' && !c) return { name: 'mannaList' };
@@ -65,7 +62,6 @@ export function parseRoute(pathname) {
   if (a === 'home' && b === 'sabbath-school' && c && !d) return { name: 'sabbathLesson', lesson: c };
   if (a === 'home' && b === 'sabbath-school' && c && d) return { name: 'sabbathDay', lesson: c, day: d };
   if (a === 'home' && b === 'magazines') return { name: 'magazines' };
-  if (a === 'home' && b === 'updates') return { name: 'updates' };
   if (a === 'home' && b === 'settings') return { name: 'settings' };
   if (a === 'home' && b === 'about') return { name: 'about' };
   return { name: 'notfound' };
@@ -85,10 +81,6 @@ export const routeTitle = (route) => {
       return route.variant === 'hope' ? 'Nambikaiyin Geethangal' : 'Thirumarai Songs';
     case 'song':
       return 'Song';
-    case 'other':
-      return 'Other Songs';
-    case 'custom':
-      return 'My Songs';
     case 'books':
       return 'Books';
     case 'book':
@@ -105,8 +97,6 @@ export const routeTitle = (route) => {
       return 'Sabbath School';
     case 'magazines':
       return 'Magazines';
-    case 'updates':
-      return 'Updates';
     case 'settings':
       return 'Settings';
     case 'about':

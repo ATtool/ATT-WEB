@@ -73,7 +73,7 @@ export default function ThirumaraiScreen({ variant }) {
     <Page
       title={isHope ? 'Hope Songs' : 'Thirumarai Songs'}
       eyebrow={isHope ? 'நம்பிக்கையின் கீதங்கள்' : 'திருமறை'}
-      backFallback="/songs/thirumarai/"
+      backFallback="/songs/"
       actions={meta ? <span className="header-badge">{songs.length}</span> : null}
     >
       <div className="segmented-links">

@@ -5,7 +5,7 @@ import Page from '../components/Page.jsx';
 import { Link } from '../router.jsx';
 import { songPath } from '../lib/paths.js';
 import { useData } from '../context/DataContext.jsx';
-import { loadStats, loadMeta, loadOtherSongs } from '../data/api.js';
+import { loadStats, loadMeta } from '../data/api.js';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { useMeta } from '../lib/useMeta.js';
 import { useChrome } from '../context/ChromeContext.jsx';
@@ -14,92 +14,99 @@ export default function SongsHub() {
   const { data: stats } = useData('stats', loadStats);
   const { data: zionMeta } = useData('zionMeta', () => loadMeta('zion'));
   const { data: thirMeta } = useData('thirumaraiMeta', () => loadMeta('thirumarai'));
-  const { data: other } = useData('otherSongs', loadOtherSongs);
-  const { typography } = useSettings();
+  const { typography, isThanglish, setThanglish } = useSettings();
   const { showToast } = useChrome();
   const [query, setQuery] = useState('');
-  const [customCount, setCustomCount] = useState(0);
+  const [cacheStatus, setCacheStatus] = useState(null);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   useMeta(
-    'Tamil Christian Songs — Zion, Thirumarai & More | Adventist Tamil Tool',
-    'Search 1,000+ Tamil Christian songs: Zion songs, Thirumarai Hope and Old songs, other songs and your own custom songs. Works offline.'
+    'Tamil Christian Songs — Zion & Thirumarai | Adventist Tamil Tool',
+    'Search 1,000+ Tamil Christian songs: Zion songs and Thirumarai Hope and Old songs. Works offline.'
   );
 
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem('@custom_songs');
-      const parsed = raw ? JSON.parse(raw) : [];
-      setCustomCount(Array.isArray(parsed) ? parsed.length : 0);
-    } catch {
-      setCustomCount(0);
+    if (!('serviceWorker' in navigator)) return undefined;
+    const onMessage = (event) => {
+      const data = event.data;
+      if (!data || (data.type !== 'CACHE_STATUS' && data.type !== 'CACHE_PROGRESS')) return;
+      setCacheStatus(data);
+      if (data.type === 'CACHE_STATUS' && data.total && data.cached >= data.total) {
+        setSaving(false);
+        setSaved(true);
+        showToast('All songs saved for offline use');
+      } else if (data.type === 'CACHE_STATUS' && data.done) {
+        setSaving(false);
+        showToast('Could not finish saving. Connect to the internet and try again.');
+      }
+    };
+    navigator.serviceWorker.addEventListener('message', onMessage);
+    navigator.serviceWorker.ready
+      .then((registration) => registration.active?.postMessage({ type: 'GET_STATUS' }))
+      .catch(() => {});
+    return () => navigator.serviceWorker.removeEventListener('message', onMessage);
+  }, [showToast]);
+
+  const saveOfflineLibrary = async () => {
+    if (!('serviceWorker' in navigator)) {
+      showToast('Offline saving is not supported in this browser.');
+      return;
     }
-  }, []);
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      if (!registration.active) return;
+      setSaving(true);
+      registration.active.postMessage({ type: 'CACHE_LIBRARY' });
+      showToast('Saving the full song library for offline use…', 4000);
+    } catch {
+      setSaving(false);
+      showToast('Offline saving is not supported in this browser.');
+    }
+  };
 
   const results = useMemo(() => {
     const value = query.trim().toLowerCase();
     if (value.length < 2) return [];
     const list = [];
-    for (const song of zionMeta?.songs || []) {
-      const haystack = `${song.number} ${song.title_ta} ${song.title_en} ${song.firstLine || ''}`.toLowerCase();
-      if (haystack.includes(value)) list.push({ ...song, collection: 'zion' });
-    }
-    for (const song of thirMeta?.songs || []) {
-      const haystack = `${song.number} ${song.hopeNumber || ''} ${song.title_ta} ${song.title_en} ${
-        song.firstLine || ''
-      }`.toLowerCase();
-      if (haystack.includes(value)) list.push({ ...song, collection: 'thirumarai' });
-    }
-    for (const song of other?.songs || []) {
-      const haystack = `${song.song_number} ${song.title_tamil} ${song.title_thanglish} ${song.lyrics || ''}`.toLowerCase();
-      if (haystack.includes(value)) {
-        list.push({
-          id: String(song.id),
-          number: String(song.song_number || song.id),
-          title_ta: song.title_tamil,
-          title_en: song.title_thanglish,
-          slug: String(song.title_thanglish || song.id)
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, ''),
-          collection: 'other',
-        });
-      }
-    }
+    const matches = (song, collection) => {
+      const number = String(song.number || '').toLowerCase();
+      const hopeNumber = String(song.hopeNumber || '').toLowerCase();
+      const titleTa = String(song.title_ta || '').toLowerCase();
+      const titleEn = String(song.title_en || '').toLowerCase();
+      const exactNumber = number === value || hopeNumber === value;
+      const partialTitle = titleTa.includes(value) || titleEn.includes(value);
+      if (exactNumber || partialTitle) list.push({ ...song, collection });
+    };
+    for (const song of zionMeta?.songs || []) matches(song, 'zion');
+    for (const song of thirMeta?.songs || []) matches(song, 'thirumarai');
     return list.slice(0, 40);
-  }, [query, zionMeta, thirMeta, other]);
+  }, [query, zionMeta, thirMeta]);
 
   const cards = [
     {
       to: '/songs/zion/',
-      title: 'Zion Songs',
-      tamil: 'சீயோன் பாடல்கள்',
+      title: isThanglish ? 'Zion Iniya Geethangal' : 'சீயோன் இனிய கீதங்கள்',
+      sub: null,
       desc: '600 songs in 38 categories',
       icon: 'music',
       count: stats?.zion || 600,
     },
     {
-      to: '/songs/thirumarai/',
-      title: 'Thirumarai',
-      tamil: 'திருமறைப் பாடல்கள்',
-      desc: 'Hope and Old collection',
+      to: '/songs/thirumarai/old/',
+      title: isThanglish ? 'Thirumarai Thirupaadalgal' : 'திருமறைத்திருப் பாடல்கள்',
+      sub: isThanglish ? '( Old Song Book )' : '( பழைய புத்தக வரிசை )',
+      desc: 'The complete Thirumarai collection',
       icon: 'book-open',
       count: stats?.thirumarai || 421,
     },
     {
-      to: '/songs/other/',
-      title: 'Other Songs',
-      tamil: 'மற்ற பாடல்கள்',
-      desc: 'Updated from the online library',
+      to: '/songs/thirumarai/hope/',
+      title: isThanglish ? 'Thirumarai Thirupaadalgal' : 'திருமறைத்திருப் பாடல்கள்',
+      sub: isThanglish ? '( Songs of Hope )' : '( நம்பிக்கையின் கீதங்கள் புத்தக வரிசை )',
+      desc: 'Nambikaiyin Geethangal collection',
       icon: 'sparkles',
-      count: other?.songs?.length ?? stats?.other ?? 0,
-    },
-    {
-      to: '/songs/custom/',
-      title: 'My Songs',
-      tamil: 'என் பாடல்கள்',
-      desc: 'Add and keep your own songs',
-      icon: 'edit',
-      count: customCount,
+      count: stats?.thirumaraiHope || 255,
     },
   ];
 
@@ -142,11 +149,13 @@ export default function SongsHub() {
             >
               <span className="song-number"><MixedText size={15}>{song.number}</MixedText></span>
               <span className="song-main">
-                <MixedText as="span" size={16} className="song-title">{song.title_ta}</MixedText>
-                {song.title_en && <span className="song-sub">{song.title_en}</span>}
+                <MixedText as="span" size={16} className="song-title">
+                  {isThanglish ? song.title_en || song.title_ta : song.title_ta}
+                </MixedText>
+                {!isThanglish && song.title_en && <span className="song-sub">{song.title_en}</span>}
               </span>
               <span className="result-source">
-                {song.collection === 'zion' ? 'Zion' : song.collection === 'thirumarai' ? 'Thirumarai' : 'Other'}
+                {song.collection === 'zion' ? 'Zion' : 'Thirumarai'}
               </span>
             </Link>
           ))}
@@ -158,26 +167,51 @@ export default function SongsHub() {
           )}
         </div>
       ) : (
-        <div className="collection-grid">
+        <div className="collection-grid stacked">
           {cards.map((card) => (
             <Link key={card.to} to={card.to} className="collection-card">
               <span className="collection-icon"><Icon name={card.icon} size={24} /></span>
+              <span className="collection-text">
+                <MixedText as="h3" size={typography.title.fontSize}>{card.title}</MixedText>
+                {card.sub && <span className="collection-tamil">{card.sub}</span>}
+                <span className="collection-desc">{card.desc}</span>
+              </span>
               <span className="collection-count">{card.count}</span>
-              <MixedText as="h3" size={typography.title.fontSize}>{card.title}</MixedText>
-              <span className="collection-tamil">{card.tamil}</span>
-              <span className="collection-desc">{card.desc}</span>
               <span className="collection-go">Open <Icon name="chevron-right" size={15} /></span>
             </Link>
           ))}
         </div>
       )}
 
+      <div className="lang-toggle" role="group" aria-label="Song language">
+        <button
+          type="button"
+          className={!isThanglish ? 'active' : ''}
+          aria-pressed={!isThanglish}
+          onClick={() => setThanglish(false)}
+        >
+          தமிழ்
+        </button>
+        <button
+          type="button"
+          className={isThanglish ? 'active' : ''}
+          aria-pressed={isThanglish}
+          onClick={() => setThanglish(true)}
+        >
+          Thanglish
+        </button>
+      </div>
+
       <button
         type="button"
-        className="offline-note"
-        onClick={() => showToast('Songs are saved automatically after the first visit. Settings → Offline library can save everything now.')}
+        className={`btn btn-primary btn-wide offline-save${saved ? ' is-faded' : ''}`}
+        disabled={saving || saved}
+        onClick={saveOfflineLibrary}
       >
-        <Icon name="check" size={15} /> All songs available offline
+        <Icon name={saving ? 'refresh' : 'download'} size={16} />
+        {saving
+          ? `Saving songs offline… ${cacheStatus?.cached ?? 0}${cacheStatus?.total ? ` / ${cacheStatus.total}` : ''}`
+          : 'Save all songs offline'}
       </button>
     </Page>
   );

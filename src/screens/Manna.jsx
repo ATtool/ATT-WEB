@@ -83,13 +83,14 @@ export function MannaList() {
 
   const view = live || index;
   const filtered = useMemo(() => {
-    const list = view?.dates || [];
+    // Hide devotions for upcoming dates — only today and past entries are listed.
+    const list = (view?.dates || []).filter((item) => !today || item.date <= today);
     const value = query.trim().toLowerCase();
     if (!value) return list;
     return list.filter((item) =>
       `${item.date} ${item.title} ${item.verse}`.toLowerCase().includes(value)
     );
-  }, [view, query]);
+  }, [view, query, today]);
 
   const groups = useMemo(() => {
     const map = new Map();
@@ -148,6 +149,7 @@ export function MannaList() {
 export function MannaReader() {
   const route = useRoute();
   const date = route.name === 'manna' ? route.date : null;
+  const today = todayISO();
   const key = `manna:${date}`;
   const { data: entry, error } = useData(key, () => loadManna(date));
   const { put } = useDataContext();
@@ -246,7 +248,7 @@ export function MannaReader() {
         ) : (
           <span />
         )}
-        {entry.nextDate ? (
+        {entry.nextDate && entry.nextDate <= today ? (
           <Link to={mannaPath(entry.nextDate)} className="reader-nav-btn next">
             <span>
               <small>Next</small>

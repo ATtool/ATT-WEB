@@ -53,15 +53,6 @@ const home = await readJSON('home.json');
 const mannaIndex = await readJSON('manna-index.json');
 const sabbathIndex = await readJSON('sabbath-index.json');
 const magazines = await readJSON('gist/magazines.json');
-const updates = await readJSON('gist/updates.json');
-const otherSongs = await readJSON('gist/other-songs.json');
-
-const otherNormalized = (Array.isArray(otherSongs?.songs) ? otherSongs.songs : []).map((song, index) => ({
-  id: String(song.id ?? index + 1),
-  number: String(song.song_number ?? song.id ?? index + 1),
-  title_ta: String(song.title_tamil || '').trim(),
-  title_en: String(song.title_thanglish || '').trim(),
-}));
 
 const books = (await import(pathToFileURL(path.join(ROOT, 'src', 'data', 'books.js')).href)).EGW_BOOKS_DATA;
 const { formatDate } = await import(pathToFileURL(path.join(ROOT, 'src', 'lib', 'dates.js')).href);
@@ -104,8 +95,8 @@ add({
   path: '/songs/',
   title: 'Tamil Christian Songs — Zion, Thirumarai & More | Adventist Tamil Tool',
   desc:
-    'Search 1,000+ Tamil Christian songs: Zion songs, Thirumarai Hope and Old songs, other songs and your own custom songs. Works offline.',
-  data: { stats, zionMeta, thirumaraiMeta: thirMeta, otherSongs },
+    'Search 1,000+ Tamil Christian songs: Zion songs and Thirumarai Hope and Old songs. Works offline.',
+  data: { stats, zionMeta, thirumaraiMeta: thirMeta },
   jsonld: {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -199,21 +190,6 @@ add({
     inLanguage: 'ta',
     numberOfItems: thirMeta.count,
   },
-});
-
-add({
-  path: '/songs/other/',
-  title: 'Other Tamil Christian Songs | Adventist Tamil Tool',
-  desc: 'Additional Tamil Christian songs from the online library, with Tamil lyrics, search and offline reading.',
-  data: { otherSongs },
-});
-
-add({
-  path: '/songs/custom/',
-  title: 'My Songs — Custom Tamil Songs | Adventist Tamil Tool',
-  desc: 'Add your own Tamil Christian songs and keep them offline on this device.',
-  robots: 'noindex,follow',
-  data: {},
 });
 
 add({
@@ -346,13 +322,6 @@ add({
 });
 
 add({
-  path: '/home/updates/',
-  title: 'App Updates | Adventist Tamil Tool',
-  desc: 'The latest content and feature updates for Adventist Tamil Tool.',
-  data: { updates },
-});
-
-add({
   path: '/home/settings/',
   title: 'Settings | Adventist Tamil Tool',
   desc: 'Theme, text size, offline storage and app settings.',
@@ -402,29 +371,6 @@ for (const { collection, song } of songRoutes) {
   });
 }
 
-for (const song of otherNormalized) {
-  const slug = String(song.title_en || song.id)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '') || `song-${song.number}`;
-  add({
-    path: `/songs/other/${song.id}-${slug}/`,
-    title: `${song.number}. ${song.title_ta} — Tamil Lyrics | Adventist Tamil Tool`,
-    desc: clip(
-      `Tamil lyrics for ${song.title_ta}${song.title_en ? ` (${song.title_en})` : ''}.`
-    ),
-    ogType: 'article',
-    data: {},
-    otherSongId: song.id,
-    jsonld: {
-      '@context': 'https://schema.org',
-      '@type': 'MusicComposition',
-      name: song.title_ta,
-      inLanguage: 'ta',
-      url: `${SITE}/songs/other/${song.id}-${slug}/`,
-    },
-  });
-}
 
 // ---------------------------------------------------------------------------
 // Render
@@ -491,9 +437,6 @@ for (const route of routes) {
       const song = await loadSong(route.songRef.collection, route.songRef.id);
       data[`song:${route.songRef.collection}:${route.songRef.id}`] = song;
     }
-    if (route.otherSongId) {
-      data.otherSongs = otherSongs;
-    }
     if (route.mannaDate) {
       const entry = await loadManna(route.mannaDate);
       data[`manna:${route.mannaDate}`] = entry;
@@ -543,7 +486,7 @@ await fs.writeFile(path.join(DIST, '404.html'), notFoundPage, 'utf8');
 // ---------------------------------------------------------------------------
 const today = new Date().toISOString().slice(0, 10);
 const sitemapEntries = routes
-  .filter((route) => route.robots.startsWith('index') && route.path !== '/songs/custom/')
+  .filter((route) => route.robots.startsWith('index'))
   .map(
     (route) =>
       `  <url>\n    <loc>${esc(canonicalFor(route.path))}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${
@@ -555,7 +498,7 @@ const sitemapEntries = routes
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`;
 await fs.writeFile(path.join(DIST, 'sitemap.xml'), sitemap, 'utf8');
 
-const robots = `User-agent: *\nAllow: /\nDisallow: /songs/custom/\n\nSitemap: ${SITE}/sitemap.xml\n`;
+const robots = `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`;
 await fs.writeFile(path.join(DIST, 'robots.txt'), robots, 'utf8');
 await fs.writeFile(path.join(DIST, '.nojekyll'), '', 'utf8');
 

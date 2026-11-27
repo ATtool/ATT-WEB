@@ -36,24 +36,22 @@ function LyricLine({ line, mode }) {
 
 export default function SongReader({ song, collection, onClose, variant }) {
   const { goBack, navigate } = useRouter();
-  const { isDark, titleSize, setTitleSize, lyricsSize, setLyricsSize, lyricsLineHeight, setLyricsLineHeight, lyricsSpacing, setLyricsSpacing, restoreDefaultTextSettings } = useSettings();
+  const { isDark, titleSize, setTitleSize, lyricsSize, setLyricsSize, lyricsLineHeight, setLyricsLineHeight, lyricsSpacing, setLyricsSpacing, restoreDefaultTextSettings, isThanglish } = useSettings();
   const { showToast } = useChrome();
   const favoritesKey =
-    collection === 'zion' ? '@zion_favs' : collection === 'thirumarai' ? '@thirumarai_favs' : collection === 'other' ? '@other_favs' : null;
+    collection === 'zion' ? '@zion_favs' : collection === 'thirumarai' ? '@thirumarai_favs' : null;
   const { isFavorite, toggle } = useFavorites(favoritesKey || '__none');
-  const [mode, setMode] = useState('ta');
+  const [mode, setMode] = useState(isThanglish ? 'translit' : 'ta');
   const [textSettings, setTextSettings] = useState(false);
 
+  // The song language follows the Tamil / Thanglish toggle from the Songs tab.
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem('@lyrics_mode');
-      if (saved === 'translit' || saved === 'combined' || saved === 'ta') setMode(saved);
-    } catch {
-      /* ignore */
-    }
-  }, []);
+    setMode(isThanglish ? 'translit' : 'ta');
+  }, [isThanglish]);
 
   const number = variant === 'hope' ? song.hopeNumber || song.number : song.number;
+  const displayTitle = isThanglish ? song.title_en || song.title_ta : song.title_ta;
+  const navTitle = (item) => (isThanglish ? item.title_en || item.title_ta : item.title_ta);
   const stanzas = useMemo(() => parseLyrics(lyricsForMode(song, mode)), [song, mode]);
   const hasTranslit = !!song.translit;
   const hasCombined = !!song.combined;
@@ -62,21 +60,10 @@ export default function SongReader({ song, collection, onClose, variant }) {
     window.scrollTo(0, 0);
   }, [song.id]);
 
-  useEffect(() => {
-    try {
-      window.localStorage.setItem('@lyrics_mode', mode);
-    } catch {
-      /* ignore */
-    }
-  }, [mode]);
-
   const onShare = async () => {
     const url = typeof window !== 'undefined' ? window.location.href : '';
-    const text = `${number} - ${song.title_ta}${song.title_en ? ` (${song.title_en})` : ''}\n\n${lyricsForMode(
-      song,
-      'ta'
-    )}`;
-    const ok = await shareText({ title: song.title_ta, text, url });
+    const text = `${number} - ${displayTitle}\n\n${lyricsForMode(song, mode)}`;
+    const ok = await shareText({ title: displayTitle, text, url });
     showToast(ok ? 'Song shared' : 'Could not share this song');
   };
 
@@ -99,7 +86,7 @@ export default function SongReader({ song, collection, onClose, variant }) {
         </button>
         <div className="reader-header-title">
           <MixedText size={15}>
-            {number} · {song.title_ta || song.title_en}
+            {number} · {displayTitle || song.title_ta || song.title_en}
           </MixedText>
         </div>
         <div className="reader-header-actions">
@@ -125,9 +112,9 @@ export default function SongReader({ song, collection, onClose, variant }) {
             <MixedText size={16}>{number}</MixedText>
           </span>
           <MixedText as="h1" size={titleSize} className="reader-title">
-            {song.title_ta || song.title_en}
+            {displayTitle || song.title_ta || song.title_en}
           </MixedText>
-          {song.title_en && <div className="reader-title-en">{song.title_en}</div>}
+          {!isThanglish && song.title_en && <div className="reader-title-en">{song.title_en}</div>}
           <div className="reader-tags">
             {song.category && <span className="tag">{song.category}</span>}
             {collection === 'thirumarai' && song.hopeNumber && song.hopeNumber !== song.number && (
@@ -201,7 +188,7 @@ export default function SongReader({ song, collection, onClose, variant }) {
                 <span>
                   <small>Previous</small>
                   <MixedText size={14}>
-                    {song.prev.number} · {song.prev.title_ta}
+                    {song.prev.number} · {navTitle(song.prev)}
                   </MixedText>
                 </span>
               </Link>
@@ -213,7 +200,7 @@ export default function SongReader({ song, collection, onClose, variant }) {
                 <span>
                   <small>Next</small>
                   <MixedText size={14}>
-                    {song.next.number} · {song.next.title_ta}
+                    {song.next.number} · {navTitle(song.next)}
                   </MixedText>
                 </span>
                 <Icon name="chevron-right" size={18} />
